@@ -148,12 +148,12 @@ class icinga2 (
   -> Concat <| tag == 'icinga2::config::file' |>
   ~> Class['::icinga2::service']
 
-  if $manage_repos or $manage_repo {
-    require ::icinga::repos
-    if $manage_repo {
-      deprecation('manage_repo', 'manage_repo is deprecated and will be replaced by manage_repos in the future.')
-    }
-  }
+  # if $manage_repos or $manage_repo {
+  #   require ::icinga::repos
+  #   if $manage_repo {
+  #     deprecation('manage_repo', 'manage_repo is deprecated and will be replaced by manage_repos in the future.')
+  #   }
+  # }
 
   anchor { '::icinga2::begin':
     notify => Class['::icinga2::service'],
